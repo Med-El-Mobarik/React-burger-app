@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import Layout from './Components/Layout/Layout';
+import BurgerBuilder from './Containers/BurgerBuilder/BurgerBuilder';
+import Checkout from './Containers/Checkout/Checkout';
+import Orders from './Containers/Orders/Orders';
+import Auth from './Containers/Auth/Auth';
+
+class App extends Component {
+  render(){
+    return (
+      <div>
+        <Layout>
+          <Route path="/auth" component={Auth} />
+          <Route path="/" exact component={BurgerBuilder}/>
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/orders" component={Orders} />
+        </Layout>
+      </div>
   );
+  }
 }
+  
 
 export default App;
